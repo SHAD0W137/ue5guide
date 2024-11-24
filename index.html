@@ -90,6 +90,7 @@ html{
             justify-content: center;
         }
         .pages-container .nav-elem{
+            z-index: 11;
             padding: 0.5rem 0.7rem;
             height: 100%;
             display: flex;
@@ -98,6 +99,10 @@ html{
             transition: background-color .3s ease;
         }
         .pages-container .nav-elem:hover{
+            cursor: pointer;
+        }
+        .pages-container .nav-elem:active{
+            z-index: 11;
             cursor: pointer;
         }
         .pages-container .nav-elem:hover .select-underline{
@@ -130,6 +135,10 @@ html{
             margin: 0.3rem;
             justify-self: flex-end;
         }
+        .helper-a{
+            color: var(--text-light-color);
+            text-decoration: none;
+        }
 
         @media (orientation: portrait) {
             .navbar .pages-container{
@@ -158,22 +167,22 @@ html{
                 
             </div>
             <div class="pages-container" id="pages-container">
-                <div class="nav-elem" href="https://shad0w137.github.io/ue5guide/">
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/"> <div class="nav-elem"> 
                     <div class="unclickable">Главная</div>
                     <div class="select-underline"></div>
-                </div>
-                <div class="nav-elem" href="basics/index.html">
+                </div> </a>
+                <a class="helper-a" href="./basics/"><div class="nav-elem">
                     <div class="unclickable">Основы</div>
                     <div class="select-underline"></div>
-                </div>
-                <div class="nav-elem" href="./reference/">
+                </div> </a>
+                <a class="helper-a" href="./reference/"><div class="nav-elem" >
                     <div class="unclickable">Справочник</div>
                     <div class="select-underline"></div>
-                </div>
-                <div class="nav-elem" href="./about/">
+                </div> </a>
+                <a class="helper-a" href="./about/"><div class="nav-elem" >
                     <div class="unclickable">Подробности</div>
                     <div class="select-underline"></div>
-                </div>
+                </div> </a>
             </div>
 
             <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
@@ -226,7 +235,7 @@ html{
         </div>
         <div class="main-content">
             <section id="main-video-section">
-                <iframe id="main-video" src="https://vk.com/video_ext.php?oid=-176128467&id=456239173&hd=4&autoplay=1&loop=1&t00h00m07s&js_api=1&volume=0" width="1920" height="1080" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                <iframe id="main-video" src="https://vk.com/video_ext.php?oid=-176128467&id=456239173&hd=4&autoplay=1&loop=1&t00h00m07s&js_api=1&showinfo=0&volume=0" width="1920" height="1080" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
                 <div id="main-video-text">
                     <h1>Unreal Engine 5</h1>
                     <h2>краткое руководство</h2>
