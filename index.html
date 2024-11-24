@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+/* Defining colors */
+html{
+--text-light-color: #fff;
+--text-dark-color: black;
+--primary-color: #db1c1c3a;
+--rimary-dark-color: #8f1515;
+--secondary-color: #252525bd;
+--secondary-dark-color: #11111185;
+
+--primary-color-transparent: #db1c1c70;
+
+
+}
+.noto-sans-main {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UE5 quick guide</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
+</head>
+<body>
+    <!-- Main body style -->
+    <style>
+        body::after{
+            backdrop-filter: blur(0.5rem);
+        }
+        body{
+            background-color: var(--secondary-color);
+            background-image: url(https://wallpapers.com/images/hd/beautiful-space-1920-x-1080-background-29oalqubqu5mc1zi.jpg);
+            background-repeat: no-repeat;
+            margin:0;
+            font-family: "Noto Sans", sans-serif;
+            color: var(--text-light-color);
+        }
+        
+    </style>
+
+    <!-- Navbar and its styling -->
+    <style>
+        .unclickable{
+            pointer-events: none;
+            user-select: none;
+            align-self: flex-start;
+        }
+        .navbar{
+            height: fit-content;
+            backdrop-filter: blur(1rem);
+            background-color: var(--secondary-dark-color);
+            position: sticky;
+            display: flex;
+            flex-direction: row;
+            flex: content;
+            justify-content: space-between;
+        }
+        .navbar .pages-container{
+            display: flex;
+            flex:content;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .pages-container .nav-elem{
+            padding: 0.5rem 0.7rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            transition: background-color .3s ease;
+        }
+        .pages-container .nav-elem:hover{
+            cursor: pointer;
+        }
+        .pages-container .nav-elem:hover .select-underline{
+            width: 100%;
+        }
+        .select-underline{
+            background-color: var(--text-light-color);
+            height: 0.15rem;
+            width: 0rem;
+            border-radius: 0.2rem;
+            pointer-events: none;
+            transition: width 0.3s ease-out;
+        }
+        .hamburger-container-button{
+            padding: 0.25rem;
+            visibility: hidden;
+            background-color: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .hamburger-container-button:hover{
+            background-color: var(--primary-color);
+            transition: background-color 0.3s ease;
+        }
+        .hamb-line{
+            display: flex;
+            width: 1.5rem;
+            height: 0.2rem;
+            background-color: var(--text-light-color);
+            margin: 0.3rem;
+            justify-self: flex-end;
+        }
+
+        @media (orientation: portrait) {
+            .navbar .pages-container{
+                display: flex;
+                flex:content;
+                flex-direction: column;
+                justify-content: center;
+                transition: flex-direction 0.3s ease;
+            }
+            .hamburger-container-button{
+            visibility: visible;
+            transition: visibility 0.3s ease;
+            }
+            .pages-container .nav-elem:hover .select-underline{
+                width: 0;
+            }
+            .pages-container .nav-elem:hover{
+                background-color: var(--primary-color);
+                transition: background-color .3s ease;
+            }
+        }
+    </style>
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="logo-container">
+                
+            </div>
+            <div class="pages-container" id="pages-container">
+                <div class="nav-elem">
+                    <div class="unclickable">Главная</div>
+                    <div class="select-underline"></div>
+                </div>
+                <div class="nav-elem">
+                    <div class="unclickable">Основы</div>
+                    <div class="select-underline"></div>
+                </div>
+                <div class="nav-elem">
+                    <div class="unclickable">Справочник</div>
+                    <div class="select-underline"></div>
+                </div>
+                <div class="nav-elem">
+                    <div class="unclickable">C++</div>
+                    <div class="select-underline"></div>
+                </div>
+            </div>
+
+            <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
+                <div class="hamb-line hamb-line-1"></div>
+                <div class="hamb-line hamb-line-2"></div>
+                <div class="hamb-line hamb-line-3"></div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        var hamburgerOpen = true;
+        const navbar = document.getElementById("navbar");
+        const navButton = document.getElementById("hamburger-container-button");
+        const pagesContainer = document.getElementById("pages-container");
+        function showHamburger(){
+            if(hamburgerOpen){
+                hamburgerOpen = false;
+                navbar.style.flexDirection = 'column';
+                pagesContainer.style.display = 'flex';
+            }
+            else{
+                hamburgerOpen = true;
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'none';
+            }
+        }
+        window.onresize = resize;
+        function resize(){
+            if(window.matchMedia('(orientation: portrait)').matches){
+                if(!hamburgerOpen){
+                    navbar.style.flexDirection = 'column';
+                    pagesContainer.style.display = 'flex';
+                }
+                else{
+                    navbar.style.flexDirection = 'row';
+                    pagesContainer.style.display = 'none';
+                }
+            } else if (window.matchMedia('(orientation: landscape)').matches){
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'flex';
+            }
+        }
+        window.onload = function(){
+            resize();
+        }
+    </script>
+
+    <!-- Main site body -->
+    <div class="site-container">
+        <div class="navpanel">
+
+        </div>
+        <div class="main-content">
+            
+        </div>
+
+    </div>
+    
+</body>
+<script>
+</script>
+</html>
