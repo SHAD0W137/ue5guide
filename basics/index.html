@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+/* Defining colors */
+html{
+--text-light-color: #fff;
+--text-dark-color: black;
+--primary-color: #db1c1c3a;
+--primary-color-solid: #db1c1c;
+--rimary-dark-color: #8f1515;
+--secondary-color: #252525bd;
+--secondary-dark-color: #11111154;
+--background-dark: #111111;
+
+
+
+}
+.noto-sans-main {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UE5 quick guide</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
+</head>
+<body>
+    <!-- Main body style -->
+    <style>
+        a{
+            color: var(--primary-color-solid);
+        }
+        html{
+            max-width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+        h1{
+            font-size: 4rem;
+            margin:0;
+        }
+        h2{
+            font-size: 2rem;
+            margin-top: 0;
+        }
+        
+        body{
+            overflow: visible;
+            background-color: var(--background-dark);
+            /* background-image: url(https://wallpapers.com/images/hd/beautiful-space-1920-x-1080-background-29oalqubqu5mc1zi.jpg); */
+            background-repeat: no-repeat;
+            margin:0;
+            font-family: "Noto Sans", sans-serif;
+            color: var(--text-light-color);
+        }
+        
+    </style>
+
+    <!-- Navbar and its styling -->
+    <style>
+        .unclickable{
+            pointer-events: none;
+            user-select: none;
+            align-self: flex-start;
+        }
+        .navbar{
+            z-index: 10;
+            top: 0px;
+            height: fit-content;
+            backdrop-filter: blur(1rem);
+            background-color: var(--secondary-dark-color);
+            position: fixed;
+            width: 100%;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            flex: content;
+            justify-content: space-between;
+        }
+        .navbar .pages-container{
+            display: flex;
+            flex:content;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .pages-container .nav-elem{
+            padding: 0.5rem 0.7rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            transition: background-color .3s ease;
+        }
+        .pages-container .nav-elem:hover{
+            cursor: pointer;
+        }
+        .pages-container .nav-elem:hover .select-underline{
+            width: 100%;
+        }
+        .select-underline{
+            background-color: var(--text-light-color);
+            height: 0.15rem;
+            width: 0rem;
+            border-radius: 0.2rem;
+            pointer-events: none;
+            transition: width 0.3s ease-out;
+        }
+        .hamburger-container-button{
+            padding: 0.25rem;
+            visibility: hidden;
+            background-color: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .hamburger-container-button:hover{
+            background-color: var(--primary-color);
+            transition: background-color 0.3s ease;
+        }
+        .hamb-line{
+            display: flex;
+            width: 1.5rem;
+            height: 0.2rem;
+            background-color: var(--text-light-color);
+            margin: 0.3rem;
+            justify-self: flex-end;
+        }
+
+        @media (orientation: portrait) {
+            .navbar .pages-container{
+                display: flex;
+                flex:content;
+                flex-direction: column;
+                justify-content: center;
+                transition: flex-direction 0.3s ease;
+            }
+            .hamburger-container-button{
+            visibility: visible;
+            transition: visibility 0.3s ease;
+            }
+            .pages-container .nav-elem:hover .select-underline{
+                width: 0;
+            }
+            .pages-container .nav-elem:hover{
+                background-color: var(--primary-color);
+                transition: background-color .3s ease;
+            }
+        }
+    </style>
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="logo-container">
+                
+            </div>
+            <div class="pages-container" id="pages-container">
+                <div class="nav-elem" href="https://shad0w137.github.io/ue5guide/">
+                    <div class="unclickable">Главная</div>
+                    <div class="select-underline"></div>
+                </div>
+                <div class="nav-elem" href="./basics/">
+                    <div class="unclickable">Основы</div>
+                    <div class="select-underline"></div>
+                </div>
+                <div class="nav-elem" href="./reference/">
+                    <div class="unclickable">Справочник</div>
+                    <div class="select-underline"></div>
+                </div>
+                <div class="nav-elem" href="./about/">
+                    <div class="unclickable">Подробности</div>
+                    <div class="select-underline"></div>
+                </div>
+            </div>
+
+            <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
+                <div class="hamb-line hamb-line-1"></div>
+                <div class="hamb-line hamb-line-2"></div>
+                <div class="hamb-line hamb-line-3"></div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Main site body -->
+    <style>
+        #main-video-section:after{
+            pointer-events: none;
+        }
+        #main-video{
+            z-index: 0;
+            filter: brightness(50%);
+            position: absolute;
+            top:0;
+            align-self: center;
+            justify-self: center;
+            scale: calc(width / 1920);
+        }
+        #main-video *{
+            pointer-events: none;
+        }
+        #main-video:after{
+            pointer-events: none;
+        }
+        #main-video:hover{
+            pointer-events: none;
+        }
+        #main-video:hover:after{
+            pointer-events: none;
+        }
+        #main-video-text{
+            pointer-events: none;
+            position: relative;
+            z-index: 2;
+            margin: 3%;
+            padding: 3%;
+        }
+        
+    </style>
+    <div class="site-container">
+        <div class="navpanel">
+
+        </div>
+        <div class="main-content">
+            <section id="main-video-section">
+                <iframe id="main-video" src="https://vk.com/video_ext.php?oid=-176128467&id=456239173&hd=4&autoplay=1&loop=1&t00h00m07s&js_api=1&showinfo=0" width="1920" height="1080" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                <div id="main-video-text">
+                    <h1>Unreal Engine 5</h1>
+                    <h2>краткое руководство</h2>
+                    Unreal Engine 5 — это очередной шаг вперед в развитии игровой графики. Движок представляет несколько значительных усовершенствований в технологии рендеринга и инструментах для разработчиков, призванных расширить границы возможного в мире нереального. Вот главные фишки, что предлагает новый движок Unreal Engine 5:
+                    <br>Nanite — технология виртуализированных микрополигонов, позволяющая добавлять высококачественные и детализированные объекты кинематографического качества непосредственно в движок с минимальной потерей детализации.
+                    <br>Lumen — это решение для глобального освещения, позволяющее создавать динамичное и реалистичное освещение в реальном времени, что обеспечивает более реалистичное взаимодействие света с поверхностями.
+                    <br>MetaHuman Creator — инструмент, помогающий разработчикам быстро создавать высокореалистичных цифровых людей.
+                    <br><br>Данный вебсайт позволит как начать свой путь в сфере игровой разработки на Unreal Engine 5, так и поможет более опытным пользователям быстро получать подсказки по существующим функциям.
+                </div>
+            </section>
+        </div>
+        
+
+    </div>
+
+    
+
+    <!-- Footer -->
+    <style>
+        footer{
+            z-index: 1;
+            background-color: var(--secondary-dark-color);
+            height: fit-content;
+            backdrop-filter: blur(1rem);
+            position:absolute;
+            width: 100%;
+            align-self: flex-end;
+            display: flex;
+            flex-direction: row;
+            flex: content;
+            justify-content: flex-start;
+            bottom:-10rem;
+            padding-bottom: 2rem;
+            padding-left: 6%;
+        }
+        .footer-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+    <footer>
+        <div class="footer-element">
+            <div class="footer-img">
+                
+            </div>
+            <div class="footer-text">
+                <h3>Контакты</h3>
+                <div>
+                    Telegram:
+                    <a id="tg">@shad0w137</a>
+                </div>
+                <div>
+                    E-Mail:
+                    <a href="mailto:shad0w137@notarealmail.ru" id="mail">shad0w137@notarealmail.ru</a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        var hamburgerOpen = true;
+        const navbar = document.getElementById("navbar");
+        const navButton = document.getElementById("hamburger-container-button");
+        const pagesContainer = document.getElementById("pages-container");
+        const mainVideo = document.getElementById("main-video");
+        function showHamburger(){
+            if(hamburgerOpen){
+                hamburgerOpen = false;
+                navbar.style.flexDirection = 'column';
+                pagesContainer.style.display = 'flex';
+            }
+            else{
+                hamburgerOpen = true;
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'none';
+            }
+        }
+        window.onresize = resize;
+        function resize(){
+            if(window.matchMedia('(orientation: portrait)').matches){
+                if(!hamburgerOpen){
+                    navbar.style.flexDirection = 'column';
+                    pagesContainer.style.display = 'flex';
+                }
+                else{
+                    navbar.style.flexDirection = 'row';
+                    pagesContainer.style.display = 'none';
+                }
+            } else if (window.matchMedia('(orientation: landscape)').matches){
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'flex';
+            }
+            // Changing video frame size
+            var vidWidth = window.innerWidth;
+            var vidHeight = vidWidth*9/16;
+            mainVideo.style.width = vidWidth + "px";
+            mainVideo.style.height = vidHeight + "px";
+        }
+
+    
+
+        window.onload = function(){
+            resize();
+        }
+    </script>
+    
+</body>
+
+</html>
