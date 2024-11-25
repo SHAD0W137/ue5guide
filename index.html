@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html id="html">
 <style>
 /* Defining colors */
 html{
@@ -30,16 +30,22 @@ html{
     <title>UE5 quick guide</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
 </head>
-<body>
+<body id="body">
     <!-- Main body style -->
     <style>
+        ::selection {
+            background: var(--primary-color);
+        }
         a{
             color: var(--primary-color-solid);
         }
         html{
             max-width: 100%;
-            min-height: 100%;
+            height: max-content;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         h1{
             font-size: 4rem;
@@ -51,13 +57,17 @@ html{
         }
         
         body{
+            flex-direction: column;
             overflow: visible;
+            height: 100%;
             background-color: var(--background-dark);
             /* background-image: url(https://wallpapers.com/images/hd/beautiful-space-1920-x-1080-background-29oalqubqu5mc1zi.jpg); */
             background-repeat: no-repeat;
             margin:0;
             font-family: "Noto Sans", sans-serif;
             color: var(--text-light-color);
+            justify-content: space-between;
+            bottom:0;
         }
         
     </style>
@@ -196,8 +206,8 @@ html{
 
     <!-- Main site body -->
     <style>
-        #main-video-section:after{
-            pointer-events: none;
+        #main-video-section{
+            overflow: hidden;
         }
         #main-video{
             z-index: 0;
@@ -207,6 +217,7 @@ html{
             align-self: center;
             justify-self: center;
             scale: calc(width / 1920);
+            overflow: hidden;
         }
         #main-video *{
             pointer-events: none;
@@ -217,15 +228,14 @@ html{
         #main-video:hover{
             pointer-events: none;
         }
-        #main-video:hover:after{
-            pointer-events: none;
-        }
         #main-video-text{
-            pointer-events: none;
             position: relative;
             z-index: 2;
             margin: 3%;
             padding: 3%;
+        }
+        .site-container{
+            padding-bottom: 4rem;
         }
         
     </style>
@@ -260,15 +270,14 @@ html{
             background-color: var(--secondary-dark-color);
             height: fit-content;
             backdrop-filter: blur(1rem);
-            position:absolute;
             width: 100%;
             align-self: flex-end;
             display: flex;
             flex-direction: row;
             flex: content;
             justify-content: flex-start;
-            bottom:-10rem;
-            padding-bottom: 2rem;
+            padding-bottom: 4rem;
+            bottom: 0;
             padding-left: 6%;
         }
         .footer-text{
@@ -276,8 +285,14 @@ html{
             flex-direction: column;
             justify-content: center;
         }
+        #filler{
+            height: 10px;
+            z-index: 10;
+            pointer-events: all;
+        }
     </style>
-    <footer>
+    <div id="filler"></div>
+    <footer id="footer">
         <div class="footer-element">
             <div class="footer-img">
                 
@@ -305,6 +320,7 @@ html{
         const navButton = document.getElementById("hamburger-container-button");
         const pagesContainer = document.getElementById("pages-container");
         const mainVideo = document.getElementById("main-video");
+        const filler = document.getElementById("filler");
         function showHamburger(){
             if(hamburgerOpen){
                 hamburgerOpen = false;
@@ -328,18 +344,29 @@ html{
                     navbar.style.flexDirection = 'row';
                     pagesContainer.style.display = 'none';
                 }
+                mainVideo.style.display = "none";
+
             } else if (window.matchMedia('(orientation: landscape)').matches){
                 navbar.style.flexDirection = 'row';
                 pagesContainer.style.display = 'flex';
+                mainVideo.style.display = "block";
+
             }
             // Changing video frame size
             var vidWidth = window.visualViewport.width;
             var vidHeight = vidWidth*9/16;
             mainVideo.style.width = vidWidth + "px";
             mainVideo.style.height = vidHeight + "px";
-        }
 
-        
+            var scrHeight = window.visualViewport.height;
+            if(vidHeight*1.1 > scrHeight){
+                filler.style.height = (vidHeight-scrHeight+vidHeight/8) + "px";
+            }
+            else {filler.style.height = "0px";}
+        }
+        window.onscroll = function(){
+            resize();
+        }
 
         window.onload = function(){
             resize();
