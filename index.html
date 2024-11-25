@@ -322,6 +322,7 @@ html{
         const pagesContainer = document.getElementById("pages-container");
         const mainVideo = document.getElementById("main-video");
         const filler = document.getElementById("filler");
+        const body = document.getElementById("body");
         function showHamburger(){
             if(hamburgerOpen){
                 hamburgerOpen = false;
@@ -364,6 +365,7 @@ html{
                 filler.style.height = (vidHeight-scrHeight+vidHeight/8) + "px";
             }
             else {filler.style.height = "0px";}
+            body.style.width = window.visualViewport.width;
         }
         window.onscroll = function(){
             resize();
