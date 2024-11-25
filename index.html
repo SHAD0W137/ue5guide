@@ -40,6 +40,7 @@ html{
             color: var(--primary-color-solid);
         }
         html{
+            width: auto;
             height: max-content;
             overflow-x: hidden;
             display: flex;
@@ -56,6 +57,7 @@ html{
         }
         
         body{
+            width: auto;
             position: relative;
             overflow-x: hidden;
             flex-direction: column;
@@ -367,8 +369,6 @@ html{
                 filler.style.height = (vidHeight-scrHeight+vidHeight/8) + "px";
             }
             else {filler.style.height = "0px";}
-            body.style.width = window.visualViewport.width + "px";
-            html.style.width = window.visualViewport.width + "px";
         }
         window.onscroll = function(){
             resize();
