@@ -30,13 +30,9 @@ html{
     <title>UE5 quick guide</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
 </head>
-<div class="page-class">
 <body>
     <!-- Main body style -->
     <style>
-        .page-class{
-          overflow-x: hidden;
-        }
         a{
             color: var(--primary-color-solid);
         }
@@ -55,7 +51,6 @@ html{
         }
         
         body{
-            overflow-x: hidden;
             overflow: visible;
             background-color: var(--background-dark);
             /* background-image: url(https://wallpapers.com/images/hd/beautiful-space-1920-x-1080-background-29oalqubqu5mc1zi.jpg); */
@@ -338,7 +333,7 @@ html{
                 pagesContainer.style.display = 'flex';
             }
             // Changing video frame size
-            var vidWidth = window.innerWidth;
+            var vidWidth = window.visualViewportWidth;
             var vidHeight = vidWidth*9/16;
             mainVideo.style.width = vidWidth + "px";
             mainVideo.style.height = vidHeight + "px";
@@ -353,5 +348,4 @@ html{
     
 </body>
 
-</div>
 </html>
