@@ -357,13 +357,13 @@ html{
                 navbar.style.flexDirection = 'row';
                 pagesContainer.style.display = 'flex';
                 mainVideo.style.display = "block";
-
+                // Changing video frame size
+                var vidWidth = window.visualViewport.width;
+                var vidHeight = vidWidth*9/16;
+                mainVideo.style.width = vidWidth + "px";
+                mainVideo.style.height = vidHeight + "px";
             }
-            // Changing video frame size
-            var vidWidth = window.visualViewport.width;
-            var vidHeight = vidWidth*9/16;
-            mainVideo.style.width = vidWidth + "px";
-            mainVideo.style.height = vidHeight + "px";
+            
 
             var scrHeight = window.visualViewport.height;
             if(vidHeight*1.1 > scrHeight){
