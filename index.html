@@ -352,8 +352,11 @@ html{
                 }
                 mainVideo.style.display = "none";
                 mainVideo.style.width = "0px";
+                mainVideo.style.position = "relative";
+
 
             } else if (window.matchMedia('(orientation: landscape)').matches){
+                mainVideo.style.position = "absolute";
                 navbar.style.flexDirection = 'row';
                 pagesContainer.style.display = 'flex';
                 mainVideo.style.display = "block";
