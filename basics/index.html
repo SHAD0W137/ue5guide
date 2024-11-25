@@ -40,8 +40,6 @@ html{
             color: var(--primary-color-solid);
         }
         html{
-            width: auto;
-            height: max-content;
             overflow-x: hidden;
         }
         h1{
@@ -54,10 +52,10 @@ html{
         }
         
         body{
-            width: 100%;
+            width: auto;
             position: relative;
             overflow-x: hidden;
-            overflow: visible;
+            flex-direction: column;
             height: 100%;
             background-color: var(--background-dark);
             /* background-image: url(https://wallpapers.com/images/hd/beautiful-space-1920-x-1080-background-29oalqubqu5mc1zi.jpg); */
@@ -153,7 +151,7 @@ html{
         @media (orientation: portrait) {
             .navbar .pages-container{
                 display: flex;
-                flex:content;
+                flex:auto;
                 flex-direction: column;
                 justify-content: center;
                 transition: flex-direction 0.3s ease;
@@ -206,9 +204,6 @@ html{
 
     <!-- Main site body -->
     <style>
-        .site-container{
-            padding-bottom: 4rem;
-        }
         
     </style>
     <div class="site-container">
@@ -216,7 +211,7 @@ html{
 
         </div>
         <div class="main-content">
-            
+
         </div>
         
 
