@@ -11,7 +11,7 @@ html{
 --rimary-dark-color: #8f1515;
 --secondary-color: #252525bd;
 --secondary-dark-color: #11111154;
---background-dark: #111111;
+--background-dark: #111111ea;
 
 
 
@@ -29,6 +29,7 @@ html{
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UE5 quick guide</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
+    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
 </head>
 <body id="body">
     <!-- Main body style -->
@@ -43,12 +44,14 @@ html{
             overflow-x: hidden;
         }
         h1{
+            padding-left: 1rem;
             font-size: 4rem;
             margin:0;
         }
         h2{
+            padding-left: 1rem;
             font-size: 2rem;
-            margin-top: 0;
+            margin: 1rem 0;
         }
         
         body{
@@ -58,8 +61,9 @@ html{
             flex-direction: column;
             height: 100%;
             background-color: var(--background-dark);
-            /* background-image: url(https://wallpapers.com/images/hd/beautiful-space-1920-x-1080-background-29oalqubqu5mc1zi.jpg); */
+            background-image: url("https://ue-cdn.artstation.com/imgproxy/TEGUgHOOigHQ-C7JWLg0UGdkoTuHaTK2rlW-J98tdvQ/filename:ue5-hero.png/resizing_type:fit/width:1920/height:0/aHR0cHM6Ly9kMWl2N2RiNDR5aGd4bi5jbG91ZGZyb250Lm5ldC9kb2N1bWVudGF0aW9uL2ltYWdlcy82NzA0MDgxMy1lNzhhLTRkNDAtOGQwNy1mZDE4ZDk0ZDUxN2UvdWU1LWhlcm8ucG5n"); 
             background-repeat: no-repeat;
+            background-size: 100%;
             margin:0;
             padding: 0;
             font-family: "Noto Sans", sans-serif;
@@ -72,13 +76,17 @@ html{
 
     <!-- Navbar and its styling -->
     <style>
+        #icon{
+            filter: invert(1);
+            height: 2rem;
+        }
         .unclickable{
             pointer-events: none;
             user-select: none;
             align-self: flex-start;
         }
         .navbar{
-            z-index: 10;
+            z-index: 100;
             top: 0px;
             height: fit-content;
             backdrop-filter: blur(1rem);
@@ -131,6 +139,25 @@ html{
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+        .logo-container{
+            padding: 0 0.5rem;
+            background-color: none;
+            z-index: 25;
+            width: 2rem;
+        }
+        .logo-container:hover{
+            background-color: var(--primary-color);
+            cursor: pointer;
+        }
+        .logo-container *{
+            transform: rotate(0deg);
+            transition: transform 0.5s ease-in-out;
+        }
+        .logo-container:hover *{
+            transform: rotate(360deg);
+            transition: transform 0.5s ease-in-out;
+        }
+
         .hamburger-container-button:hover{
             background-color: var(--primary-color);
             transition: background-color 0.3s ease;
@@ -146,6 +173,12 @@ html{
         .helper-a{
             color: var(--text-light-color);
             text-decoration: none;
+        }
+
+        #icon{
+            margin-top: 0.2rem;
+            align-self: end;
+            pointer-events: none;
         }
 
         @media (orientation: portrait) {
@@ -171,24 +204,32 @@ html{
     </style>
     <nav>
         <div class="navbar" id="navbar">
-            <div class="logo-container">
-                
+            <div class="logo-container" id="logo-container">
+                <img id="icon" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
             </div>
             <div class="pages-container" id="pages-container">
                 <a class="helper-a" href="https://shad0w137.github.io/ue5guide/"> <div class="nav-elem"> 
                     <div class="unclickable">Главная</div>
                     <div class="select-underline"></div>
                 </div> </a>
-                <a class="helper-a" href="./basics/"><div class="nav-elem">
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/basics/"><div class="nav-elem">
                     <div class="unclickable">Основы</div>
                     <div class="select-underline"></div>
                 </div> </a>
-                <a class="helper-a" href="./reference/"><div class="nav-elem" >
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/reference/"><div class="nav-elem" >
                     <div class="unclickable">Справочник</div>
                     <div class="select-underline"></div>
                 </div> </a>
-                <a class="helper-a" href="./about/"><div class="nav-elem" >
-                    <div class="unclickable">Подробности</div>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/useful/"><div class="nav-elem" >
+                    <div class="unclickable">Полезное</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/gallery/"><div class="nav-elem" >
+                    <div class="unclickable">Галерея</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/news/"><div class="nav-elem" >
+                    <div class="unclickable">Новости</div>
                     <div class="select-underline"></div>
                 </div> </a>
             </div>
@@ -204,14 +245,173 @@ html{
 
     <!-- Main site body -->
     <style>
-        
+        .site-container{
+            display: flex;
+            flex-direction: row;
+        }
+        .main-content{
+            padding: 0 0%;
+            padding-top: 10rem;
+            margin-left: 15rem;
+            
+        }
+        .navpanel{
+            height: 100%;
+            background-color: var(--secondary-dark-color);
+            backdrop-filter:blur(1rem);
+            scrollbar-width: none;
+            width: 15rem;
+            top: 2.5rem;
+            position: fixed;
+            overflow-y: scroll;
+            z-index: 11;
+        }
+        table{
+            backdrop-filter: blur(1rem);
+            background-color: var(--secondary-dark-color);
+            margin: 1rem 0;
+            width:100%;
+        }
+        tr, td, th{
+            padding: 1rem;
+        }
+        td:hover{
+            background-color: var(--primary-color);
+        }
+        th{
+            text-align:left;
+        }
+        .page-img{
+            padding-top: 0.5rem;
+            width: 100%;
+            margin-bottom: 0;
+        }
+        #download-btn{
+            background-color: var(--secondary-dark-color);
+            padding: 1rem;
+            margin-top: none;
+        }
+        #download-btn:hover{
+            background-color: var(--primary-color);
+        }
+        .navsection{
+            padding: 0 1rem;
+        }
+        .list-elem{
+            padding: 0.5rem;
+            width: 100%;
+        }
+        .space{
+            padding-left: 1rem;
+        }
+        .navheader{
+            padding: 0.5rem;
+            margin: 0;
+        }
+        .list-elem:hover, .navheader:hover{
+            cursor: pointer;
+            background-color: var(--primary-color);
+        }
+        #h-filler{
+            height: 5rem;
+        }
+
     </style>
     <div class="site-container">
-        <div class="navpanel">
+        <div class="navpanel" id="navpanel">
+            <h3 class="navheader" id="h-beginning">Начало</h3>
+            <section class="navsection" id="beginning">
+                <a class="helper-a" href=""><div class="list-elem">Установка</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Viewport</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Content Browser</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Outliner</div></a>
+            </section>
+            <h3 class="navheader" id="h-vp">Viewport</h3>
+            <section class="navsection" id="vp">
+                <a class="helper-a" href=""><div class="list-elem">Перемещение</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Отображение</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Полигональная сетка</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Настройки графики</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Перспектива</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Технические элементы</div></a>
+            </section>
+            <h3 class="navheader" id="h-objects">Объекты</h3>
+            <section class="navsection" id="objects">
+                <a class="helper-a" href=""><div class="list-elem">Перемещение</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Вращение</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Масштабирование</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Параметры</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Стандартные объекты</div></a>
+            </section>
+            <h3 class="navheader" id="h-browser">Content Browser</h3>
+            <section class="navsection" id="browser">
+                <a class="helper-a" href=""><div class="list-elem">Где находится</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Навигация</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Возможности</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Импорт объектов</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Добавление объектов</div></a>
+            </section>
+            <h3 class="navheader" id="h-more">Создание персонажа</h3>
+            <section class="navsection" id="more">
+                <a class="helper-a" href=""><div class="list-elem">Классы</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Особенности</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Способности</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Добавление персонажа</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Добавление камеры</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Настройка управления</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Настройка коллизий</div></a>
 
+            </section>
+            <h3 id="h-filler"></h3>
         </div>
-        <div class="main-content">
+        <div class="main-content" id="main-content">
+            <h1>Установка</h1>
+            <div class="space">Представленные далее шаги позволяет установить Unreal Engine 5 на ваш компьютер.</div>
+            <h2>Cистемные требования</h2>
+            <div class="space">Перед установкой на компьютер или ноутбук следует ознакомиться с минимальными и рекомендуемыми требованиями. Unreal Engine 5 - требовательное ПО, поэтому требует мощный компьютер.</div>
+            <table style="--columns-count: 2;">
+                <thead>
+                    <th>Рекомендуемые требования</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Операционная система</td>
+                        <td>Windows 10 64-bit версия 1909 или выше</td>
+                    </tr>
+                    <tr>
+                        <td>Процессор</td>
+                        <td>Четырёхъядерный Intel or AMD, 2.5 GHz или производительнее</td>
+                    </tr>
+                    <tr>
+                        <td>Видеопамять</td>
+                        <td>8 ГБ Видеопамяти или более</td>
+                    </tr>
+                    <tr>
+                        <td>Графическая карта</td>
+                        <td>Поддерживвающая DirectX 11 или 12 с актуальными драйверами</td>
+                    </tr>
 
+                </tbody>
+            </table>
+            <h2>Epic Games Launcher</h2>
+            <div class="space">Установка Unreal Engine 5 происходит из фирменного приложения компании Epic Games.</div>
+            <img class="page-img" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/basics/egldownload.jpg">
+            <a class="helper-a" href="https://store.epicgames.com/ru/download"><h2 id="download-btn">Скачать Epic Games Store</h2></a>
+            <h2>Учётная запись Epic Games</h2>
+            <div class="space">Для пользования Epic Games и Unreal Engine требуется аккаунт Epic Games. Процесс регистрации интуитивно понятен. Необходимо указать адрес элеткронной почты, дату рождения, страну, имя и придумать пароль. Далее подтвердить адрес элеткронной почты.</div>
+            <a class="helper-a" href="https://www.epicgames.com/id/register/date-of-birth"><h2 id="download-btn">Зарегистрировать аккаунт Epic Games</h2></a>
+            
+            <h2>Запуск Epic Games Launcher</h2>
+            <div class="space">Далее можно запустить установленный ранее Epic Games Launcher. После входа в аккаунт появится примерно такое окно:</div>
+            <img class="page-img" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/basics/eglmain.png">
+            <div class="space">Здесь потребуется перейти в раздел "Unreal Engine"</div>
+            <h2>Установка Unreal Engine 5</h2>
+            <div class="space">В разделе "Unreal Engine" нужно выбрать вкладку "Библиотека" и нажать на желтый плюс.</div>
+            <img class="page-img" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/basics/eglyellowplus.png">
+            <h2>Завершение установки</h2>
+            <div class="space">Далее появится опция выбора версии. После выбора версии и нажатия на кнопку "установить", будет необходимо выбрать директорию установки движка. Во избежание ошибок лучше оставить предложенную директорию.</div>
+            <img class="page-img" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/basics/eglinstalled.png">
+            <h2>Поздравляем! Вы успешно установили Unreal Engine 5!</h2>
         </div>
         
 
@@ -270,10 +470,64 @@ html{
 
 
     <script>
+        // Adding some navpanel listeners
+        document.getElementById("h-beginning").addEventListener("click", function(){
+            if(document.getElementById("beginning").style.display != "none"){
+                document.getElementById("beginning").style.display = "none";
+            }
+            else{
+                document.getElementById("beginning").style.display = "block";
+            }
+        })
+        document.getElementById("h-vp").addEventListener("click", function(){
+            if(document.getElementById("vp").style.display != "none"){
+                document.getElementById("vp").style.display = "none";
+            }
+            else{
+                document.getElementById("vp").style.display = "block";
+            }
+        })
+        document.getElementById("h-objects").addEventListener("click", function(){
+            if(document.getElementById("objects").style.display != "none"){
+                document.getElementById("objects").style.display = "none";
+            }
+            else{
+                document.getElementById("objects").style.display = "block";
+            }
+        })
+        document.getElementById("h-browser").addEventListener("click", function(){
+            if(document.getElementById("browser").style.display != "none"){
+                document.getElementById("browser").style.display = "none";
+            }
+            else{
+                document.getElementById("browser").style.display = "block";
+            }
+        })
+        document.getElementById("h-more").addEventListener("click", function(){
+            if(document.getElementById("more").style.display != "none"){
+                document.getElementById("more").style.display = "none";
+            }
+            else{
+                document.getElementById("more").style.display = "block";
+            }
+        })
+
+
+        
         var hamburgerOpen = true;
+        var navpanelOpen = true;
         const navbar = document.getElementById("navbar");
         const navButton = document.getElementById("hamburger-container-button");
         const pagesContainer = document.getElementById("pages-container");
+        const navpanel = document.getElementById("navpanel");
+        const mainContent = document.getElementById("main-content");
+        const footer = document.getElementById("footer");
+
+        const logoContainer = document.getElementById("logo-container");
+        logoContainer.addEventListener('click', function(){
+            navpanelOpen = !navpanelOpen;
+            resize();
+        })
 
         function showHamburger(){
             if(hamburgerOpen){
@@ -298,9 +552,36 @@ html{
                     navbar.style.flexDirection = 'row';
                     pagesContainer.style.display = 'none';
                 }
+                // Navpanel mobile
+                if(navpanelOpen){
+                    navpanel.style.display = "block";
+                }
+                else{
+                    navpanel.style.display = "none";
+                }
+                navpanel.style.width = "100%";
+                mainContent.style.marginLeft = "0px";
+                footer.style.paddingLeft = "1rem";
+                
+
             } else if (window.matchMedia('(orientation: landscape)').matches){
                 navbar.style.flexDirection = 'row';
                 pagesContainer.style.display = 'flex';
+                // Navpanel desktop
+                if(navpanelOpen){
+                    navpanel.style.display = "block";
+                    navpanel.style.width = "15rem";
+                    mainContent.style.marginLeft = "15rem";
+                    footer.style.paddingLeft = "16rem";
+                }
+                else{
+                    navpanel.style.display = "none";
+                    navpanel.style.width = "15rem";
+                    mainContent.style.marginLeft = "0rem";
+                    footer.style.paddingLeft = "1rem";
+                }
+                
+
             }
             
 
