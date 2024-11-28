@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UE5 quick guide</title>
+    <link rel="stylesheet" href="../basics/ue5style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans" >
+    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
+</head>
+<body id="body">
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="logo-container" id="logo-container" style="pointer-events: none;">
+                <img id="icon" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
+            </div>
+            <div class="pages-container" id="pages-container">
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/"> <div class="nav-elem"> 
+                    <div class="unclickable">Главная</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/basics/"><div class="nav-elem">
+                    <div class="unclickable">Основы</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/reference/"><div class="nav-elem" >
+                    <div class="unclickable">Справочник</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/useful/"><div class="nav-elem" >
+                    <div class="unclickable">Полезное</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/gallery/"><div class="nav-elem" >
+                    <div class="unclickable">Галерея</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/news/"><div class="nav-elem" >
+                    <div class="unclickable">Новости</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+            </div>
+
+            <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
+                <div class="hamb-line hamb-line-1"></div>
+                <div class="hamb-line hamb-line-2"></div>
+                <div class="hamb-line hamb-line-3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main site body -->
+    <div class="site-container">
+        <div class="main-content" id="main-content" style="margin-left: 0;">
+            <h1>Галерея</h1>
+            <div class="gallery">
+                <img class="gallery-image" src="https://cdn2.unrealengine.com/ue5-nextgen-block-v01-1920x1080-91e408f9f99f.jpg?resize=1&w=1920" alt="Image 1">
+                <img class="gallery-image" src="https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fa-first-look-at-unreal-engine-5%2FUE5_Announcement_Feed_Large-1920x1080-8c8ab609059186399d92ca5dc8a748e62880e0e7.jpg" alt="Image 2">
+                <img class="gallery-image" src="https://cdn2.unrealengine.com/uefn-for-ue-com-06-1920x1080-17deff3276d7.png?resize=1&w=1920" alt="Image 3">
+                <img class="gallery-image" src="https://assetsio.gnwcdn.com/digitalfoundry-2020-unreal-engine-5-playstation-5-tech-demo-analysis-1589464603264.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp" alt="Image 4">
+                <img class="gallery-image" src="https://static.tildacdn.com/tild6235-3235-4961-b935-616263616131/unreal-engine-5-2-fe.jpg" alt="Image 5">
+                <img class="gallery-image" src="https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fa-first-look-at-unreal-engine-5%2FUnreal_Engine_5_Gallery_1_ALT-2160x1214-6599ca93295364b5d9cd0c34a203426baf38c4b8.jpg?resize=1&w=1200" alt="Image 6">
+                <!-- Add more images as needed -->
+              </div>
+                
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="height: 10rem;" id="filler"></div>
+    <footer id="footer" style="padding-left: 1rem;">
+        <div class="footer-element">
+            <div class="footer-img">
+                
+            </div>
+            <div class="footer-text">
+                <h3>Контакты</h3>
+                <div>
+                    Telegram:
+                    <a id="tg">@shad0w137</a>
+                </div>
+                <div>
+                    E-Mail:
+                    <a href="mailto:shad0w137@notarealmail.ru" id="mail">shad0w137@notarealmail.ru</a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        var hamburgerOpen = true;
+        var navpanelOpen = true;
+        const navbar = document.getElementById("navbar");
+        const navButton = document.getElementById("hamburger-container-button");
+        const pagesContainer = document.getElementById("pages-container");
+        const mainContent = document.getElementById("main-content");
+        const footer = document.getElementById("footer");
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        let fullscreenImage = null;
+
+        const logoContainer = document.getElementById("logo-container");
+     
+
+        function showHamburger(){
+            if(hamburgerOpen){
+                hamburgerOpen = false;
+                navbar.style.flexDirection = 'column';
+                pagesContainer.style.display = 'flex';
+            }
+            else{
+                hamburgerOpen = true;
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'none';
+            }
+        }
+        window.onresize = resize;
+        function resize(){
+            if(window.matchMedia('(orientation: portrait)').matches){
+                if(!hamburgerOpen){
+                    navbar.style.flexDirection = 'column';
+                    pagesContainer.style.display = 'flex';
+                }
+                else{
+                    navbar.style.flexDirection = 'row';
+                    pagesContainer.style.display = 'none';
+                }
+                
+                mainContent.style.marginLeft = "0px";
+                footer.style.paddingLeft = "1rem";
+                
+
+            } else if (window.matchMedia('(orientation: landscape)').matches){
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'flex';
+                
+            }
+        }
+        window.onscroll = function(){
+            resize();
+        }
+
+        window.onload = function(){
+            resize();
+        }
+    // Creating fullscreen-image logic
+
+
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    if (fullscreenImage) {
+      // Close fullscreen
+      document.body.removeChild(fullscreenImage);
+      fullscreenImage = null;
+    } else {
+      // Open fullscreen
+      fullscreenImage = document.createElement('div');
+      fullscreenImage.classList.add('fullscreen-image');
+
+      const fullscreenImg = document.createElement('img');
+      fullscreenImg.src = img.src;
+      fullscreenImg.alt = img.alt;
+      fullscreenImage.appendChild(fullscreenImg);
+
+      fullscreenImage.addEventListener('click', () => {
+        document.body.removeChild(fullscreenImage);
+        fullscreenImage = null;
+      });
+
+      document.body.appendChild(fullscreenImage);
+    }
+  });
+});
+    </script>
+    
+</body>
+
+</html>
