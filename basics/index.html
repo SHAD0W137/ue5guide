@@ -1,210 +1,20 @@
 <!DOCTYPE html>
 
 <html id="html">
-<style>
-/* Defining colors */
-html{
---text-light-color: #fff;
---text-dark-color: black;
---primary-color: #db1c1c3a;
---primary-color-solid: #db1c1c;
---rimary-dark-color: #8f1515;
---secondary-color: #252525bd;
---secondary-dark-color: #11111154;
---background-dark: #111111ea;
 
-
-
-}
-.noto-sans-main {
-  font-family: "Noto Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
-</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UE5 quick guide</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
-    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/ue5style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans" >
+    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/f044dc7a8715882fbd658495a27b8c6e63833dc8/resources/logo-light.svg">
 </head>
 <body id="body">
-    <!-- Main body style -->
-    <style>
-        ::selection {
-            background: var(--primary-color);
-        }
-        a{
-            color: var(--primary-color-solid);
-        }
-        html{
-            overflow-x: hidden;
-        }
-        h1{
-            padding-left: 1rem;
-            font-size: 4rem;
-            margin:0;
-        }
-        h2{
-            padding-left: 1rem;
-            font-size: 2rem;
-            margin: 1rem 0;
-        }
-        
-        body{
-            width: auto;
-            position: relative;
-            overflow-x: hidden;
-            flex-direction: column;
-            height: 100%;
-            background-color: var(--background-dark);
-            background-image: url("https://ue-cdn.artstation.com/imgproxy/TEGUgHOOigHQ-C7JWLg0UGdkoTuHaTK2rlW-J98tdvQ/filename:ue5-hero.png/resizing_type:fit/width:1920/height:0/aHR0cHM6Ly9kMWl2N2RiNDR5aGd4bi5jbG91ZGZyb250Lm5ldC9kb2N1bWVudGF0aW9uL2ltYWdlcy82NzA0MDgxMy1lNzhhLTRkNDAtOGQwNy1mZDE4ZDk0ZDUxN2UvdWU1LWhlcm8ucG5n"); 
-            background-repeat: no-repeat;
-            background-size: 100%;
-            margin:0;
-            padding: 0;
-            font-family: "Noto Sans", sans-serif;
-            color: var(--text-light-color);
-            justify-content: space-between;
-            bottom:0;
-        }
-        
-    </style>
-
-    <!-- Navbar and its styling -->
-    <style>
-        #icon{
-            filter: invert(1);
-            height: 2rem;
-        }
-        .unclickable{
-            pointer-events: none;
-            user-select: none;
-            align-self: flex-start;
-        }
-        .navbar{
-            z-index: 100;
-            top: 0px;
-            height: fit-content;
-            backdrop-filter: blur(1rem);
-            background-color: var(--secondary-dark-color);
-            position: fixed;
-            width: 100%;
-            align-self: flex-start;
-            display: flex;
-            flex-direction: row;
-            flex: content;
-            justify-content: space-between;
-        }
-        .navbar .pages-container{
-            display: flex;
-            flex:content;
-            flex-direction: row;
-            justify-content: center;
-        }
-        .pages-container .nav-elem{
-            z-index: 11;
-            padding: 0.5rem 0.7rem;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            transition: background-color .3s ease;
-        }
-        .pages-container .nav-elem:hover{
-            cursor: pointer;
-        }
-        .pages-container .nav-elem:active{
-            z-index: 11;
-            cursor: pointer;
-        }
-        .pages-container .nav-elem:hover .select-underline{
-            width: 100%;
-        }
-        .select-underline{
-            background-color: var(--text-light-color);
-            height: 0.15rem;
-            width: 0rem;
-            border-radius: 0.2rem;
-            pointer-events: none;
-            transition: width 0.3s ease-out;
-        }
-        .hamburger-container-button{
-            padding: 0.25rem;
-            visibility: hidden;
-            background-color: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .logo-container{
-            padding: 0 0.5rem;
-            background-color: none;
-            z-index: 25;
-            width: 2rem;
-        }
-        .logo-container:hover{
-            background-color: var(--primary-color);
-            cursor: pointer;
-        }
-        .logo-container *{
-            transform: rotate(0deg);
-            transition: transform 0.5s ease-in-out;
-        }
-        .logo-container:hover *{
-            transform: rotate(360deg);
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .hamburger-container-button:hover{
-            background-color: var(--primary-color);
-            transition: background-color 0.3s ease;
-        }
-        .hamb-line{
-            display: flex;
-            width: 1.5rem;
-            height: 0.2rem;
-            background-color: var(--text-light-color);
-            margin: 0.3rem;
-            justify-self: flex-end;
-        }
-        .helper-a{
-            color: var(--text-light-color);
-            text-decoration: none;
-        }
-
-        #icon{
-            margin-top: 0.2rem;
-            align-self: end;
-            pointer-events: none;
-        }
-
-        @media (orientation: portrait) {
-            .navbar .pages-container{
-                display: flex;
-                flex:auto;
-                flex-direction: column;
-                justify-content: center;
-                transition: flex-direction 0.3s ease;
-            }
-            .hamburger-container-button{
-            visibility: visible;
-            transition: visibility 0.3s ease;
-            }
-            .pages-container .nav-elem:hover .select-underline{
-                width: 0;
-            }
-            .pages-container .nav-elem:hover{
-                background-color: var(--primary-color);
-                transition: background-color .3s ease;
-            }
-        }
-    </style>
+    <!-- Navbar -->
     <nav>
         <div class="navbar" id="navbar">
-            <div class="logo-container" id="logo-container">
+            <div class="logo-container" id="logo-container" >
                 <img id="icon" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
             </div>
             <div class="pages-container" id="pages-container">
@@ -241,87 +51,13 @@ html{
             </div>
         </div>
     </nav>
-    
 
     <!-- Main site body -->
-    <style>
-        .site-container{
-            display: flex;
-            flex-direction: row;
-        }
-        .main-content{
-            padding: 0 0%;
-            padding-top: 10rem;
-            margin-left: 15rem;
-            
-        }
-        .navpanel{
-            height: 100%;
-            background-color: var(--secondary-dark-color);
-            backdrop-filter:blur(1rem);
-            scrollbar-width: none;
-            width: 15rem;
-            top: 2.5rem;
-            position: fixed;
-            overflow-y: scroll;
-            z-index: 11;
-        }
-        table{
-            backdrop-filter: blur(1rem);
-            background-color: var(--secondary-dark-color);
-            margin: 1rem 0;
-            width:100%;
-        }
-        tr, td, th{
-            padding: 1rem;
-        }
-        td:hover{
-            background-color: var(--primary-color);
-        }
-        th{
-            text-align:left;
-        }
-        .page-img{
-            padding-top: 0.5rem;
-            width: 100%;
-            margin-bottom: 0;
-        }
-        #download-btn{
-            background-color: var(--secondary-dark-color);
-            padding: 1rem;
-            margin-top: none;
-        }
-        #download-btn:hover{
-            background-color: var(--primary-color);
-        }
-        .navsection{
-            padding: 0 1rem;
-        }
-        .list-elem{
-            padding: 0.5rem;
-            width: 100%;
-        }
-        .space{
-            padding-left: 1rem;
-        }
-        .navheader{
-            padding: 0.5rem;
-            margin: 0;
-        }
-        .list-elem:hover, .navheader:hover{
-            cursor: pointer;
-            background-color: var(--primary-color);
-        }
-        #h-filler{
-            height: 5rem;
-        }
-
-    </style>
     <div class="site-container">
         <div class="navpanel" id="navpanel">
             <h3 class="navheader" id="h-beginning">Начало</h3>
             <section class="navsection" id="beginning">
-                <a class="helper-a" href=""><div class="list-elem">Установка</div></a>
+                <a class="helper-a" href=""><div class="list-elem" style="background-color: var(--primary-color);">Установка</div></a>
                 <a class="helper-a" href=""><div class="list-elem">Viewport</div></a>
                 <a class="helper-a" href=""><div class="list-elem">Content Browser</div></a>
                 <a class="helper-a" href=""><div class="list-elem">Outliner</div></a>
@@ -413,40 +149,9 @@ html{
             <img class="page-img" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/basics/eglinstalled.png">
             <h2>Поздравляем! Вы успешно установили Unreal Engine 5!</h2>
         </div>
-        
-
     </div>
 
-    
-
     <!-- Footer -->
-    <style>
-        footer{
-            z-index: 1;
-            background-color: var(--secondary-dark-color);
-            height: fit-content;
-            backdrop-filter: blur(1rem);
-            width: 100%;
-            align-self: flex-end;
-            display: flex;
-            flex-direction: row;
-            flex: content;
-            justify-content: flex-start;
-            padding-bottom: 4rem;
-            bottom: 0;
-            padding-left: 6%;
-        }
-        .footer-text{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        #filler{
-            height: 10px;
-            z-index: 10;
-            pointer-events: all;
-        }
-    </style>
     <footer id="footer">
         <div class="footer-element">
             <div class="footer-img">
@@ -466,7 +171,6 @@ html{
             </div>
         </div>
     </footer>
-
 
 
     <script>
@@ -580,12 +284,7 @@ html{
                     mainContent.style.marginLeft = "0rem";
                     footer.style.paddingLeft = "1rem";
                 }
-                
-
             }
-            
-
-            
         }
         window.onscroll = function(){
             resize();
@@ -594,8 +293,6 @@ html{
         window.onload = function(){
             resize();
         }
-
-        
     </script>
     
 </body>
