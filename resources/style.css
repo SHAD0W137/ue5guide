@@ -398,6 +398,7 @@ footer{
 .main-news-body{
     padding-left: 1rem;
     flex: 3 3 160px;
+    backdrop-filter: blur(1rem);
 }
 
 @media (orientation: portrait) {
