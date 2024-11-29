@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UE5 quick guide</title>
+    <link rel="stylesheet" href="../resources/style.css" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
+    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/f044dc7a8715882fbd658495a27b8c6e63833dc8/resources/logo-light.svg">
+</head>
+<body id="body">
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="logo-container" id="logo-container" >
+                <img id="icon" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
+            </div>
+            <div class="pages-container" id="pages-container">
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/"> <div class="nav-elem"> 
+                    <div class="unclickable">Главная</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/basics/"><div class="nav-elem">
+                    <div class="unclickable">Основы</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/reference/"><div class="nav-elem" >
+                    <div class="unclickable">Справочник</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/useful/"><div class="nav-elem" >
+                    <div class="unclickable">Полезное</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/gallery/"><div class="nav-elem" >
+                    <div class="unclickable">Галерея</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/news/"><div class="nav-elem" >
+                    <div class="unclickable">Новости</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+            </div>
+
+            <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
+                <div class="hamb-line hamb-line-1"></div>
+                <div class="hamb-line hamb-line-2"></div>
+                <div class="hamb-line hamb-line-3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main site body -->
+    <div class="site-container">
+        <div class="navpanel" id="navpanel">
+            <h3 class="navheader" id="h-beginning">Классы</h3>
+            <section class="navsection" id="beginning">
+                <a class="helper-a" href=""><div class="list-elem" style="background-color: var(--primary-color);">APawn</div></a>
+                <a class="helper-a" href=""><div class="list-elem">Soon...</div></a>
+            </section>
+            
+            </section>
+            <h3 id="h-filler"></h3>
+        </div>
+        <div class="main-content" id="main-content">
+            <h1>Справочник</h1>
+            <div class="space">Здесь легко можно найти информацию по классам и функциям, используемым в Unreal Engine 5.</div>
+            <h2>Раздел находится в разработке</h2>
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-element">
+            <div class="footer-img">
+                
+            </div>
+            <div class="footer-text">
+                <h3>Контакты</h3>
+                <div>
+                    Telegram:
+                    <a id="tg">@shad0w137</a>
+                </div>
+                <div>
+                    E-Mail:
+                    <a href="mailto:shad0w137@notarealmail.ru" id="mail">shad0w137@notarealmail.ru</a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Adding some navpanel listeners
+        document.getElementById("h-beginning").addEventListener("click", function(){
+            if(document.getElementById("beginning").style.display != "none"){
+                document.getElementById("beginning").style.display = "none";
+            }
+            else{
+                document.getElementById("beginning").style.display = "block";
+            }
+        })
+        document.getElementById("h-vp").addEventListener("click", function(){
+            if(document.getElementById("vp").style.display != "none"){
+                document.getElementById("vp").style.display = "none";
+            }
+            else{
+                document.getElementById("vp").style.display = "block";
+            }
+        })
+        document.getElementById("h-objects").addEventListener("click", function(){
+            if(document.getElementById("objects").style.display != "none"){
+                document.getElementById("objects").style.display = "none";
+            }
+            else{
+                document.getElementById("objects").style.display = "block";
+            }
+        })
+        document.getElementById("h-browser").addEventListener("click", function(){
+            if(document.getElementById("browser").style.display != "none"){
+                document.getElementById("browser").style.display = "none";
+            }
+            else{
+                document.getElementById("browser").style.display = "block";
+            }
+        })
+        document.getElementById("h-more").addEventListener("click", function(){
+            if(document.getElementById("more").style.display != "none"){
+                document.getElementById("more").style.display = "none";
+            }
+            else{
+                document.getElementById("more").style.display = "block";
+            }
+        })
+
+
+        
+        var hamburgerOpen = true;
+        var navpanelOpen = true;
+        const navbar = document.getElementById("navbar");
+        const navButton = document.getElementById("hamburger-container-button");
+        const pagesContainer = document.getElementById("pages-container");
+        const navpanel = document.getElementById("navpanel");
+        const mainContent = document.getElementById("main-content");
+        const footer = document.getElementById("footer");
+
+        const logoContainer = document.getElementById("logo-container");
+        logoContainer.addEventListener('click', function(){
+            navpanelOpen = !navpanelOpen;
+            resize();
+        })
+
+        function showHamburger(){
+            if(hamburgerOpen){
+                hamburgerOpen = false;
+                navbar.style.flexDirection = 'column';
+                pagesContainer.style.display = 'flex';
+            }
+            else{
+                hamburgerOpen = true;
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'none';
+            }
+        }
+        window.onresize = resize;
+        function resize(){
+            if(window.matchMedia('(orientation: portrait)').matches){
+                if(!hamburgerOpen){
+                    navbar.style.flexDirection = 'column';
+                    pagesContainer.style.display = 'flex';
+                }
+                else{
+                    navbar.style.flexDirection = 'row';
+                    pagesContainer.style.display = 'none';
+                }
+                // Navpanel mobile
+                if(navpanelOpen){
+                    navpanel.style.display = "block";
+                }
+                else{
+                    navpanel.style.display = "none";
+                }
+                navpanel.style.width = "100%";
+                mainContent.style.marginLeft = "0px";
+                footer.style.paddingLeft = "1rem";
+                
+
+            } else if (window.matchMedia('(orientation: landscape)').matches){
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'flex';
+                // Navpanel desktop
+                if(navpanelOpen){
+                    navpanel.style.display = "block";
+                    navpanel.style.width = "15rem";
+                    mainContent.style.marginLeft = "15rem";
+                    footer.style.paddingLeft = "16rem";
+                }
+                else{
+                    navpanel.style.display = "none";
+                    navpanel.style.width = "15rem";
+                    mainContent.style.marginLeft = "0rem";
+                    footer.style.paddingLeft = "1rem";
+                }
+            }
+        }
+        window.onscroll = function(){
+            resize();
+        }
+
+        window.onload = function(){
+            resize();
+        }
+    </script>
+    
+</body>
+
+</html>
