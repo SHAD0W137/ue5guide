@@ -35,14 +35,12 @@ html{
     object-fit: cover;
 }
 .useful-content-elem span{
-    width: 100%;
     backdrop-filter: blur(1rem);
     align-items: end;
     position:absolute;
     display: flex;
     background-color: var(--secondary-dark-color);
-    padding: 0.5rem 2rem;
-    padding-left: 10%;
+    padding: 0.5rem 10%;
     justify-content: center;
     
 }
