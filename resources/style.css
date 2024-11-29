@@ -381,6 +381,7 @@ footer{
     display: flex;
     flex-direction: row;
     transition: background-color 0.3s ease-in-out;
+    backdrop-filter: blur(1rem);
 }
 .main-news img, .news-item img{
    width: 100%;
@@ -398,7 +399,7 @@ footer{
 .main-news-body{
     padding-left: 1rem;
     flex: 3 3 160px;
-    backdrop-filter: blur(1rem);
+    
 }
 
 @media (orientation: portrait) {
