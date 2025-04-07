@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UE5 quick guide</title>
+    <link rel="stylesheet" href="../resources/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans" >
+    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/f044dc7a8715882fbd658495a27b8c6e63833dc8/resources/logo-light.svg">
+</head>
+<body id="body">
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="logo-container" id="logo-container" style="pointer-events: none;">
+                <img id="icon" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
+            </div>
+            <div class="pages-container" id="pages-container">
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/"> <div class="nav-elem"> 
+                    <div class="unclickable">Главная</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/basics/"><div class="nav-elem">
+                    <div class="unclickable">Основы</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/reference/"><div class="nav-elem" >
+                    <div class="unclickable">Справочник</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/useful/"><div class="nav-elem" >
+                    <div class="unclickable">Полезное</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/gallery/"><div class="nav-elem" >
+                    <div class="unclickable">Галерея</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/news/"><div class="nav-elem" >
+                    <div class="unclickable">Новости</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+            </div>
+
+            <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
+                <div class="hamb-line hamb-line-1"></div>
+                <div class="hamb-line hamb-line-2"></div>
+                <div class="hamb-line hamb-line-3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main site body -->
+    <div class="site-container">
+        <div class="main-content" id="main-content" style="margin-left: 0;">
+            <h1>Полезные ресурсы</h1>
+            <div class="space">Здесь представлены полезные сайты, где можно найти дополнительные сведения по работе с Unreal Engine 5.</div>
+            <div class="useful-content-wrap" id="ucw">
+                
+                <div class="useful-content-elem">
+                    <img src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/useful/ue5logo.webp">
+                    <a class="helper-a" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-5-5-documentation">
+                    <div class="overlay">
+                        <span>Официальная документация Unreal Engine 5. Можно найти информацию по более конкретным функциям движка, а также посмотреть обсуждения на форуме.</span>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="useful-content-elem">
+                    <img src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/useful/ytguide1.png">
+                    <a class="helper-a" href="https://www.youtube.com/watch?v=dWAL0ISKk-E&list=PLDyJYA6aTY1mD7DZA45ZJonX6kb1KnUD2">
+                    <div class="overlay">
+                        <span>Небольшой бесплатный видеокурс на платформе YouTube по работе в Unreal Engine 5.</span>
+                    </div>
+                    </a>
+                </div>
+                <div class="useful-content-elem">
+                    <img src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/useful/habr.png">
+                    <a class="helper-a" href="https://habr.com/ru/articles/344394/">
+                    <div class="overlay">
+                        <span>Серия статей по работе в Unreal Engine 5 на вебсайте habr.com</span>
+                    </div>
+                    </a>
+                </div>
+                <div class="useful-content-elem">
+                    <img src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/useful/pikabu.png">
+                    <a class="helper-a" href="https://pikabu.ru/community/unrealengine">
+                    <div class="overlay">
+                        <span>Раздел Unreal Engine в Российском информационно-развлекательном сообществе Пикабу. Можно как найти полезные материалы, так и задать вопросы.</span>
+                    </div>
+                    </a>
+                </div>
+                <div class="useful-content-elem">
+                    <img src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/useful/reddit.jpg">
+                    <a class="helper-a" href="https://www.reddit.com/r/UnrealEngine5/">
+                    <div class="overlay">
+                        <span>Страница Unreal Engine 5 на сайте reddit. В отличие от Пикабу, является англоязычным ресурсом, но можно найти больше разных материалов.</span>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" style="padding-left: 1rem;">
+        <div class="footer-element">
+            <div class="footer-img">
+                
+            </div>
+            <div class="footer-text">
+                <h3>Контакты</h3>
+                <div>
+                    Telegram:
+                    <a id="tg">@shad0w137</a>
+                </div>
+                <div>
+                    E-Mail:
+                    <a href="mailto:shad0w137@notarealmail.ru" id="mail">shad0w137@notarealmail.ru</a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        var hamburgerOpen = true;
+        var navpanelOpen = true;
+        const navbar = document.getElementById("navbar");
+        const navButton = document.getElementById("hamburger-container-button");
+        const pagesContainer = document.getElementById("pages-container");
+        const mainContent = document.getElementById("main-content");
+        const footer = document.getElementById("footer");
+
+        const logoContainer = document.getElementById("logo-container");
+       
+
+        function showHamburger(){
+            if(hamburgerOpen){
+                hamburgerOpen = false;
+                navbar.style.flexDirection = 'column';
+                pagesContainer.style.display = 'flex';
+            }
+            else{
+                hamburgerOpen = true;
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'none';
+            }
+        }
+        window.onresize = resize;
+        function resize(){
+            if(window.matchMedia('(orientation: portrait)').matches){
+                if(!hamburgerOpen){
+                    navbar.style.flexDirection = 'column';
+                    pagesContainer.style.display = 'flex';
+                }
+                else{
+                    navbar.style.flexDirection = 'row';
+                    pagesContainer.style.display = 'none';
+                }
+                
+                navpanel.style.width = "100%";
+                mainContent.style.marginLeft = "0px";
+                footer.style.paddingLeft = "1rem";
+                
+
+            } else if (window.matchMedia('(orientation: landscape)').matches){
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'flex';
+                
+            }
+        }
+        window.onscroll = function(){
+            resize();
+        }
+
+        window.onload = function(){
+            resize();
+        }
+    </script>
+    
+</body>
+
+</html>

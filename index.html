@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UE5 quick guide</title>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/refs/heads/main/resources/ue5style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans" >
+    <link rel="icon" href="https://raw.githubusercontent.com/SHAD0W137/ue5guide/f044dc7a8715882fbd658495a27b8c6e63833dc8/resources/logo-light.svg">
+</head>
+<body id="body">
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar" id="navbar">
+            <div class="logo-container" id="logo-container" style="pointer-events: none;">
+                <img id="icon" src="https://raw.githubusercontent.com/SHAD0W137/ue5guide/b56a05b5c3316335f0fe40f174362e5c7cd5813c/resources/logo.svg">
+            </div>
+            <div class="pages-container" id="pages-container">
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/"> <div class="nav-elem"> 
+                    <div class="unclickable">Главная</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/basics/"><div class="nav-elem">
+                    <div class="unclickable">Основы</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/reference/"><div class="nav-elem" >
+                    <div class="unclickable">Справочник</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/useful/"><div class="nav-elem" >
+                    <div class="unclickable">Полезное</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/gallery/"><div class="nav-elem" >
+                    <div class="unclickable">Галерея</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+                <a class="helper-a" href="https://shad0w137.github.io/ue5guide/news/"><div class="nav-elem" >
+                    <div class="unclickable">Новости</div>
+                    <div class="select-underline"></div>
+                </div> </a>
+            </div>
+
+            <div class="hamburger-container-button" id="hamburger-container-button" onclick="showHamburger()">
+                <div class="hamb-line hamb-line-1"></div>
+                <div class="hamb-line hamb-line-2"></div>
+                <div class="hamb-line hamb-line-3"></div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Main site body -->
+    <div class="site-container">
+        <div class="main-content" style="margin-left: 0;">
+            <section id="main-video-section">
+                <iframe id="main-video" src="https://vk.com/video_ext.php?oid=-176128467&id=456239173&hd=4&autoplay=1&loop=1&t00h00m07s&js_api=1&showinfo=0&volume=0" width="1920" height="1080" allow="autoplay; encrypted-media; screen-wake-lock;" frameborder="0" allowfullscreen="0"></iframe>
+                <div id="main-video-text">
+                    <h1 style="padding-left: 0;">Unreal Engine 5</h1>
+                    <h2 style="padding-left: 0;">краткое руководство</h2>
+                    Unreal Engine 5 — это очередной шаг вперед в развитии игровой графики. Движок представляет несколько значительных усовершенствований в технологии рендеринга и инструментах для разработчиков, призванных расширить границы возможного в мире нереального. Вот главные фишки, что предлагает новый движок Unreal Engine 5:
+                    <br>Nanite — технология виртуализированных микрополигонов, позволяющая добавлять высококачественные и детализированные объекты кинематографического качества непосредственно в движок с минимальной потерей детализации.
+                    <br>Lumen — это решение для глобального освещения, позволяющее создавать динамичное и реалистичное освещение в реальном времени, что обеспечивает более реалистичное взаимодействие света с поверхностями.
+                    <br>MetaHuman Creator — инструмент, помогающий разработчикам быстро создавать высокореалистичных цифровых людей.
+                    <br><br>Данный вебсайт позволит как начать свой путь в сфере игровой разработки на Unreal Engine 5, так и поможет более опытным пользователям быстро получать подсказки по существующим функциям.
+                </div>
+            </section>
+        </div>
+        
+
+    </div>
+
+    
+
+    <!-- Footer -->
+    <div id="filler"></div>
+    <footer id="footer">
+        <div class="footer-element">
+            <div class="footer-img">
+                
+            </div>
+            <div class="footer-text">
+                <h3>Контакты</h3>
+                <div>
+                    Telegram:
+                    <a id="tg">@shad0w137</a>
+                </div>
+                <div>
+                    E-Mail:
+                    <a href="mailto:shad0w137@notarealmail.ru" id="mail">shad0w137@notarealmail.ru</a>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        var hamburgerOpen = true;
+        const navbar = document.getElementById("navbar");
+        const navButton = document.getElementById("hamburger-container-button");
+        const pagesContainer = document.getElementById("pages-container");
+        const mainVideo = document.getElementById("main-video");
+        const filler = document.getElementById("filler");
+        const body = document.getElementById("body");
+        const html = document.getElementById("html");
+        function showHamburger(){
+            if(hamburgerOpen){
+                hamburgerOpen = false;
+                navbar.style.flexDirection = 'column';
+                pagesContainer.style.display = 'flex';
+            }
+            else{
+                hamburgerOpen = true;
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'none';
+            }
+        }
+        window.onresize = resize;
+        function resize(){
+            if(window.matchMedia('(orientation: portrait)').matches){
+                if(!hamburgerOpen){
+                    navbar.style.flexDirection = 'column';
+                    pagesContainer.style.display = 'flex';
+                }
+                else{
+                    navbar.style.flexDirection = 'row';
+                    pagesContainer.style.display = 'none';
+                }
+                mainVideo.style.display = "none";
+                mainVideo.style.width = "0px";
+                mainVideo.style.position = "relative";
+
+
+            } else if (window.matchMedia('(orientation: landscape)').matches){
+                mainVideo.style.position = "absolute";
+                navbar.style.flexDirection = 'row';
+                pagesContainer.style.display = 'flex';
+                mainVideo.style.display = "block";
+                // Changing video frame size
+                var vidWidth = window.visualViewport.width;
+                var vidHeight = vidWidth*9/16;
+                mainVideo.style.width = vidWidth + "px";
+                mainVideo.style.height = vidHeight + "px";
+            }
+            
+
+            var scrHeight = window.visualViewport.height;
+            if(vidHeight*1.1 > scrHeight){
+                filler.style.height = (vidHeight-scrHeight+vidHeight/8) + "px";
+            }
+            else {filler.style.height = "0px";}
+        }
+        window.onscroll = function(){
+            resize();
+        }
+
+        window.onload = function(){
+            resize();
+        }
+
+        
+    </script>
+    
+</body>
+
+</html>
